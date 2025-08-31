@@ -1,6 +1,6 @@
 """Main module."""
 
-import common
+from pypackage_example import common
 
 
 def main():
