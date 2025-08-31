@@ -81,6 +81,7 @@ nav:
     - Report Issues: https://github.com/gthlor/pypackage_example/issues
     - Examples:
         - examples/intro.ipynb
+        - examples/map.ipynb
     - API Reference:
           - pypackage_example module: pypackage_example.md
           - common module: common.md
