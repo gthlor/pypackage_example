@@ -82,6 +82,7 @@ nav:
     - Examples:
         - examples/intro.ipynb
         - examples/map.ipynb
+        - examples/01_folium.ipynb
     - API Reference:
           - pypackage_example module: pypackage_example.md
           - common module: common.md
