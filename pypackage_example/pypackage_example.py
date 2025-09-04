@@ -8,7 +8,6 @@ class LeafletMap(ipyleaflet.Map):
         super().__init__(center=center, zoom=zoom, **kwargs)
         self.layout.height = height
 
-
     def add_basemap(self, basemap="OpenStreetMap"):
         basemaps = {
             "OpenStreetMap": ipyleaflet.basemaps.OpenStreetMap.Mapnik,
@@ -38,7 +37,5 @@ class LeafletMap(ipyleaflet.Map):
         layer = ipyleaflet.TileLayer(url=url, name=basemap)
         self.add(layer)
 
-    
     def dummy_method(self):
         pass
-
