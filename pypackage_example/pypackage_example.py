@@ -36,3 +36,6 @@ class LeafletMap(ipyleaflet.Map):
         url = eval(f"ipyleaflet.basemaps.{basemap}").build_url()
         layer = ipyleaflet.TileLayer(url=url, name=basemap)
         self.add(layer)
+
+    def dummy_method(self):
+        pass
