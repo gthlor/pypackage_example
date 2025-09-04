@@ -8,6 +8,7 @@ class LeafletMap(ipyleaflet.Map):
         super().__init__(center=center, zoom=zoom, **kwargs)
         self.layout.height = height
     
+    
     def add_basemap(self, basemap="OpenStreetMap"):
         basemaps = {
             "OpenStreetMap": ipyleaflet.basemaps.OpenStreetMap.Mapnik,
@@ -27,11 +28,8 @@ class LeafletMap(ipyleaflet.Map):
         else:
             raise ValueError(f"Basemap '{basemap}' not recognized. Available options: {list(basemaps.keys())}")
         
+
     def add_basemap2(self, basemap="OpenTopoMap"):
         url = eval(f"ipyleaflet.basemaps.{basemap}").build_url()
         layer = ipyleaflet.TileLayer(url=url, name=basemap)
         self.add(layer)
-
-
-
-
