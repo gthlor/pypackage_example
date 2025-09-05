@@ -37,5 +37,10 @@ class LeafletMap(ipyleaflet.Map):
         layer = ipyleaflet.TileLayer(url=url, name=basemap)
         self.add(layer)
 
-    def dummy_method(self):
-        pass
+    def add_layer_control(self):
+        layer_control = ipyleaflet.LayersControl(position="topright")
+        self.add(layer_control)
+
+    def add_vector(self, vector_data):
+        geo_json = ipyleaflet.GeoJSON(data=vector_data)
+        self.add(geo_json)
