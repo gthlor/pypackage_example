@@ -1,9 +1,18 @@
 import folium
+import folium.plugins
 import geopandas as gpd
 from typing import Union
 
 
 class FoliumMap(folium.Map):
+    """Custom Folium map class for easy vector and layer management.
+
+    Args:
+        center (tuple, optional): Initial map center as (lat, lon). Defaults to (0, 0).
+        zoom (int, optional): Initial zoom level. Defaults to 2.
+        **kwargs: Additional keyword arguments passed to folium.Map.
+    """
+
     def __init__(self, center=(0, 0), zoom=2, **kwargs):
         super().__init__(location=center, zoom_start=zoom, **kwargs)
 
@@ -48,3 +57,37 @@ class FoliumMap(folium.Map):
 
         # Load GeoJSON
         folium.GeoJson(data=geojson_data, name=name).add_to(self)
+
+    def add_split_map(
+        self, left_layer="openstreetmap", right_layer="cartodbpositron", **kwargs
+    ):
+        """
+        Add a split map with two layers for comparison.
+
+        Args:
+            left_layer (folium.Layer): Layer to show on the left side.
+            right_layer (folium.Layer): Layer to show on the right side.
+
+        Returns: None.
+        """
+        # # if we want to include also google maps
+
+        # map_types = {
+        #     'ROADMAP': 'm',
+        #     'SATELLITE': 's',
+        #     'HYBRID': 'y',
+        #     'TERRAIN': 'p'
+        # }
+        # map_type = map_types[map_type.upper()]
+
+        # url = (
+        #     f'http://mt1.google.com/vt/lyrs={map_type.lower()}&x={{x}}&y={{y}}&z={{z}}'
+        # )
+
+        left_layer = folium.TileLayer(left_layer, **kwargs)
+        right_layer = folium.TileLayer(right_layer, **kwargs)
+        sbs = folium.plugins.SideBySideLayers(left_layer, right_layer)
+
+        left_layer.add_to(self)
+        right_layer.add_to(self)
+        sbs.add_to(self)
