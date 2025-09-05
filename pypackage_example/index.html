@@ -646,6 +646,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_basemap()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap2" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_basemap2()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_layer_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_layer_control()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_vector" class="md-nav__link">
     <span class="md-ellipsis">
       add_vector()
@@ -744,6 +771,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_basemap()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap2" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_basemap2()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_layer_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_layer_control()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_vector" class="md-nav__link">
     <span class="md-ellipsis">
       add_vector()
@@ -814,16 +868,151 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
 
     <div class="doc doc-contents ">
 
+      <p>Custom Leaflet map class based on ipyleaflet.Map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>center</code></td>
+        <td><code>list</code></td>
+        <td><p>Initial map center as [lat, lon]. Defaults to [20, 0].</p></td>
+        <td><code>[20, 0]</code></td>
+      </tr>
+      <tr>
+        <td><code>zoom</code></td>
+        <td><code>int</code></td>
+        <td><p>Initial zoom level. Defaults to 2.</p></td>
+        <td><code>2</code></td>
+      </tr>
+      <tr>
+        <td><code>height</code></td>
+        <td><code>str</code></td>
+        <td><p>Map height in pixels or CSS units. Defaults to "400px".</p></td>
+        <td><code>&#39;400px&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>**kwargs</code></td>
+        <td></td>
+        <td><p>Additional keyword arguments passed to ipyleaflet.Map.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>layout</code></td>
+        <td><code>ipywidgets.Layout</code></td>
+        <td><p>Layout object for map sizing.</p></td>
+      </tr>
+      <tr>
+        <td><code>scroll_wheel_zoom</code></td>
+        <td><code>bool</code></td>
+        <td><p>Enables scroll wheel zooming.</p></td>
+      </tr>
+  </tbody>
+</table>      <div class="admonition methods">
+<p class="admonition-title">Methods</p>
+<p>add_basemap(basemap="OpenStreetMap"):
+    Adds a basemap layer from predefined options.</p>
+<p>add_basemap2(basemap="OpenTopoMap"):
+    Adds a basemap layer using dynamic basemap string.</p>
+<p>add_layer_control():
+    Adds a layer control widget to the map.</p>
+<p>add_vector(vector_data, name="Vector Layer", zoom_to_layer=True, style=None, hover_style=None):
+    Adds vector data to the map from file path, GeoDataFrame, or GeoJSON-like dict.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! args
+    vector_data (str | geopandas.GeoDataFrame | dict): Vector data source.
+    name (str, optional): Layer name. Defaults to &quot;Vector Layer&quot;.
+    zoom_to_layer (bool, optional): Zooms to vector bounds. Defaults to True.
+    style (dict, optional): Style for vector features. Defaults to None.
+    hover_style (dict, optional): Hover style for vector features. Defaults to None.
+
+!!! raises
+    ValueError: If vector_data type is not supported.
+</code></pre></div></td></tr></table></div>
+</div>
 
         <details class="quote">
           <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LeafletMap</span><span class="p">(</span><span class="n">ipyleaflet</span><span class="o">.</span><span class="n">Map</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom Leaflet map class based on ipyleaflet.Map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        center (list, optional): Initial map center as [lat, lon]. Defaults to [20, 0].</span>
+<span class="sd">        zoom (int, optional): Initial zoom level. Defaults to 2.</span>
+<span class="sd">        height (str, optional): Map height in pixels or CSS units. Defaults to &quot;400px&quot;.</span>
+<span class="sd">        **kwargs: Additional keyword arguments passed to ipyleaflet.Map.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        layout (ipywidgets.Layout): Layout object for map sizing.</span>
+<span class="sd">        scroll_wheel_zoom (bool): Enables scroll wheel zooming.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        add_basemap(basemap=&quot;OpenStreetMap&quot;):</span>
+<span class="sd">            Adds a basemap layer from predefined options.</span>
+
+<span class="sd">        add_basemap2(basemap=&quot;OpenTopoMap&quot;):</span>
+<span class="sd">            Adds a basemap layer using dynamic basemap string.</span>
+
+<span class="sd">        add_layer_control():</span>
+<span class="sd">            Adds a layer control widget to the map.</span>
+
+<span class="sd">        add_vector(vector_data, name=&quot;Vector Layer&quot;, zoom_to_layer=True, style=None, hover_style=None):</span>
+<span class="sd">            Adds vector data to the map from file path, GeoDataFrame, or GeoJSON-like dict.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                vector_data (str | geopandas.GeoDataFrame | dict): Vector data source.</span>
+<span class="sd">                name (str, optional): Layer name. Defaults to &quot;Vector Layer&quot;.</span>
+<span class="sd">                zoom_to_layer (bool, optional): Zooms to vector bounds. Defaults to True.</span>
+<span class="sd">                style (dict, optional): Style for vector features. Defaults to None.</span>
+<span class="sd">                hover_style (dict, optional): Hover style for vector features. Defaults to None.</span>
+
+<span class="sd">            Raises:</span>
+<span class="sd">                ValueError: If vector_data type is not supported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;400px&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="n">zoom</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scroll_wheel_zoom</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a basemap layer from predefined options.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            basemap (str, optional): Name of the basemap to add.</span>
+<span class="sd">                Options are &quot;OpenStreetMap&quot;, &quot;CartoDB Positron&quot;, &quot;CartoDB DarkMatter&quot;,</span>
+<span class="sd">                &quot;OpenTopoMap&quot;, &quot;Esri WorldImagery&quot;. Defaults to &quot;OpenStreetMap&quot;.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the basemap name is not recognized.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">basemaps</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">:</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">basemaps</span><span class="o">.</span><span class="n">OpenStreetMap</span><span class="o">.</span><span class="n">Mapnik</span><span class="p">,</span>
             <span class="s2">&quot;CartoDB Positron&quot;</span><span class="p">:</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">basemaps</span><span class="o">.</span><span class="n">CartoDB</span><span class="o">.</span><span class="n">Positron</span><span class="p">,</span>
@@ -843,6 +1032,15 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
             <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_basemap2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a basemap layer using a dynamic basemap string.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            basemap (str, optional): Name of the basemap to add. Should match an attribute in ipyleaflet.basemaps.</span>
+<span class="sd">                Defaults to &quot;OpenTopoMap&quot;.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the basemap name is not recognized.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="n">url</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ipyleaflet.basemaps.</span><span class="si">{</span><span class="n">basemap</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build_url</span><span class="p">()</span>
@@ -855,6 +1053,10 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_layer_control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a layer control widget to the map.</span>
+
+<span class="sd">        This allows toggling visibility of layers on the map.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">layer_control</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer_control</span><span class="p">)</span>
 
@@ -866,8 +1068,17 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
         <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">hover_style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Add vector data to the map. Supports file path, GeoDataFrame, or GeoJSON-like dict.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds vector data to the map from file path, GeoDataFrame, or GeoJSON-like dict.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            vector_data (str | geopandas.GeoDataFrame | dict): Vector data source.</span>
+<span class="sd">            name (str, optional): Layer name. Defaults to &quot;Vector Layer&quot;.</span>
+<span class="sd">            zoom_to_layer (bool, optional): Zooms to vector bounds. Defaults to True.</span>
+<span class="sd">            style (dict, optional): Style for vector features. Defaults to None.</span>
+<span class="sd">            hover_style (dict, optional): Hover style for vector features. Defaults to None.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If vector_data type is not supported.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -919,6 +1130,202 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
 
 
 
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_basemap" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="s1">&#39;OpenStreetMap&#39;</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a basemap layer from predefined options.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>basemap</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the basemap to add.
+Options are "OpenStreetMap", "CartoDB Positron", "CartoDB DarkMatter",
+"OpenTopoMap", "Esri WorldImagery". Defaults to "OpenStreetMap".</p></td>
+        <td><code>&#39;OpenStreetMap&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the basemap name is not recognized.</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a basemap layer from predefined options.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        basemap (str, optional): Name of the basemap to add.</span>
+<span class="sd">            Options are &quot;OpenStreetMap&quot;, &quot;CartoDB Positron&quot;, &quot;CartoDB DarkMatter&quot;,</span>
+<span class="sd">            &quot;OpenTopoMap&quot;, &quot;Esri WorldImagery&quot;. Defaults to &quot;OpenStreetMap&quot;.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the basemap name is not recognized.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">basemaps</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">:</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">basemaps</span><span class="o">.</span><span class="n">OpenStreetMap</span><span class="o">.</span><span class="n">Mapnik</span><span class="p">,</span>
+        <span class="s2">&quot;CartoDB Positron&quot;</span><span class="p">:</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">basemaps</span><span class="o">.</span><span class="n">CartoDB</span><span class="o">.</span><span class="n">Positron</span><span class="p">,</span>
+        <span class="s2">&quot;CartoDB DarkMatter&quot;</span><span class="p">:</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">basemaps</span><span class="o">.</span><span class="n">CartoDB</span><span class="o">.</span><span class="n">DarkMatter</span><span class="p">,</span>
+        <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">:</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">basemaps</span><span class="o">.</span><span class="n">OpenTopoMap</span><span class="p">,</span>
+        <span class="s2">&quot;Esri WorldImagery&quot;</span><span class="p">:</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">basemaps</span><span class="o">.</span><span class="n">Esri</span><span class="o">.</span><span class="n">WorldImagery</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">basemap</span> <span class="ow">in</span> <span class="n">basemaps</span><span class="p">:</span>
+        <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">basemaps</span><span class="p">[</span><span class="n">basemap</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
+            <span class="n">attribution</span><span class="o">=</span><span class="n">basemaps</span><span class="p">[</span><span class="n">basemap</span><span class="p">][</span><span class="s2">&quot;attribution&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Basemap &#39;</span><span class="si">{</span><span class="n">basemap</span><span class="si">}</span><span class="s2">&#39; not recognized. Available options: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">basemaps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_basemap2" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_basemap2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="s1">&#39;OpenTopoMap&#39;</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap2" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a basemap layer using a dynamic basemap string.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>basemap</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the basemap to add. Should match an attribute in ipyleaflet.basemaps.
+Defaults to "OpenTopoMap".</p></td>
+        <td><code>&#39;OpenTopoMap&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the basemap name is not recognized.</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_basemap2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a basemap layer using a dynamic basemap string.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        basemap (str, optional): Name of the basemap to add. Should match an attribute in ipyleaflet.basemaps.</span>
+<span class="sd">            Defaults to &quot;OpenTopoMap&quot;.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the basemap name is not recognized.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ipyleaflet.basemaps.</span><span class="si">{</span><span class="n">basemap</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build_url</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Basemap &#39;</span><span class="si">{</span><span class="n">basemap</span><span class="si">}</span><span class="s2">&#39; not recognized. Available options: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">ipyleaflet</span><span class="o">.</span><span class="n">basemaps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">basemap</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_layer_control" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_layer_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_layer_control" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a layer control widget to the map.</p>
+<p>This allows toggling visibility of layers on the map.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_layer_control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a layer control widget to the map.</span>
+
+<span class="sd">    This allows toggling visibility of layers on the map.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">layer_control</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer_control</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
 
 
 
@@ -934,8 +1341,66 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
 
     <div class="doc doc-contents ">
 
-      <p>Add vector data to the map. Supports file path, GeoDataFrame, or GeoJSON-like dict.</p>
+      <p>Adds vector data to the map from file path, GeoDataFrame, or GeoJSON-like dict.</p>
 
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>vector_data</code></td>
+        <td><code>str | geopandas.GeoDataFrame | dict</code></td>
+        <td><p>Vector data source.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>Layer name. Defaults to "Vector Layer".</p></td>
+        <td><code>&#39;Vector Layer&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>zoom_to_layer</code></td>
+        <td><code>bool</code></td>
+        <td><p>Zooms to vector bounds. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>style</code></td>
+        <td><code>dict</code></td>
+        <td><p>Style for vector features. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>hover_style</code></td>
+        <td><code>dict</code></td>
+        <td><p>Hover style for vector features. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If vector_data type is not supported.</p></td>
+      </tr>
+  </tbody>
+</table>
         <details class="quote">
           <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_vector</span><span class="p">(</span>
@@ -946,8 +1411,17 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
     <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">hover_style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Add vector data to the map. Supports file path, GeoDataFrame, or GeoJSON-like dict.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds vector data to the map from file path, GeoDataFrame, or GeoJSON-like dict.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        vector_data (str | geopandas.GeoDataFrame | dict): Vector data source.</span>
+<span class="sd">        name (str, optional): Layer name. Defaults to &quot;Vector Layer&quot;.</span>
+<span class="sd">        zoom_to_layer (bool, optional): Zooms to vector bounds. Defaults to True.</span>
+<span class="sd">        style (dict, optional): Style for vector features. Defaults to None.</span>
+<span class="sd">        hover_style (dict, optional): Hover style for vector features. Defaults to None.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If vector_data type is not supported.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
