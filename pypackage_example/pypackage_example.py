@@ -113,6 +113,7 @@ class LeafletMap(ipyleaflet.Map):
         zoom_to_layer=True,
         style=None,
         hover_style=None,
+        **kwargs,
     ):
         """Adds vector data to the map from file path, GeoDataFrame, or GeoJSON-like dict.
 
@@ -154,9 +155,71 @@ class LeafletMap(ipyleaflet.Map):
 
         # Load GeoJSON
         geo_json = ipyleaflet.GeoJSON(
-            data=geojson_data,
-            name=name,
-            style=style,
-            hover_style=hover_style,
+            data=geojson_data, name=name, style=style, hover_style=hover_style, **kwargs
         )
         self.add(geo_json)
+
+    def add_raster(self, raster_data: str, **kwards) -> None:
+        """Add raster data to the map using localtileserver.
+
+        Args:
+            raster_data (str): path to the raster file.
+        """
+        from localtileserver import TileClient, get_leaflet_tile_layer
+
+        tc = TileClient(raster_data)
+        tile_layer = get_leaflet_tile_layer(tc, **kwards)
+        self.add(tile_layer)
+        self.center = tc.center()
+        self.zoom = tc.default_zoom
+
+    def add_staticImage(self, image_path: str, bounds: list = None, **kwargs) -> None:
+        """Add a static image to the map.
+
+        Args:
+            image_path (str): path to the image file.
+            bounds (list): bounds of the image in [[south, west], [north, east]] format.
+        """
+        # if not os.path.isfile(image_path):
+        #     raise ValueError(f"Image file '{image_path}' does not exist.")
+
+        if bounds is None:
+            bounds = [[-90, -180], [90, 180]]
+
+        image_layer = ipyleaflet.ImageOverlay(url=image_path, bounds=bounds, **kwargs)
+
+        self.add(image_layer)
+        self.fit_bounds(bounds)
+
+    def add_video(self, video_path: str, bounds: list = None, **kwargs) -> None:
+        """Add a video to the map.
+
+        Args:
+            video_path (str): path to the video file.
+            bounds (list): bounds of the video in [[south, west], [north, east]] format.
+        """
+        # if not os.path.isfile(video_path):
+        #     raise ValueError(f"Video file '{video_path}' does not exist.")
+
+        if bounds is None:
+            bounds = [[-90, -180], [90, 180]]
+
+        video_layer = ipyleaflet.VideoOverlay(url=video_path, bounds=bounds, **kwargs)
+
+        self.add(video_layer)
+        self.fit_bounds(bounds)
+
+    def add_webservice(
+        self, url: str, lyr_name: str = "WMS Layer", transparent=True, **kwargs
+    ) -> None:
+        """Add a web service layer to the map.
+
+        Args:
+            url (str): URL of the web service.
+            name (str, optional): Name of the layer. Defaults to "WMS Layer".
+            **kwargs: Additional keyword arguments passed to the WMSLayer.
+        """
+        wms_layer = ipyleaflet.WMSLayer(
+            url=url, layers=lyr_name, transparent=transparent, **kwargs
+        )
+        self.add(wms_layer)
