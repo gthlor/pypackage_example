@@ -673,9 +673,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_raster" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_raster()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_staticImage" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_staticImage()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_vector" class="md-nav__link">
     <span class="md-ellipsis">
       add_vector()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_video" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_video()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_webservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_webservice()
     </span>
   </a>
   
@@ -798,9 +834,45 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_raster" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_raster()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_staticImage" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_staticImage()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_vector" class="md-nav__link">
     <span class="md-ellipsis">
       add_vector()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_video" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_video()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_webservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_webservice()
     </span>
   </a>
   
@@ -1067,6 +1139,7 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
         <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">hover_style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds vector data to the map from file path, GeoDataFrame, or GeoJSON-like dict.</span>
 
@@ -1108,12 +1181,74 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
 
         <span class="c1"># Load GeoJSON</span>
         <span class="n">geo_json</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">GeoJSON</span><span class="p">(</span>
-            <span class="n">data</span><span class="o">=</span><span class="n">geojson_data</span><span class="p">,</span>
-            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-            <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
-            <span class="n">hover_style</span><span class="o">=</span><span class="n">hover_style</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">geojson_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">hover_style</span><span class="o">=</span><span class="n">hover_style</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">geo_json</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raster_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwards</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add raster data to the map using localtileserver.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raster_data (str): path to the raster file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">localtileserver</span><span class="w"> </span><span class="kn">import</span> <span class="n">TileClient</span><span class="p">,</span> <span class="n">get_leaflet_tile_layer</span>
+
+        <span class="n">tc</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">raster_data</span><span class="p">)</span>
+        <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="o">**</span><span class="n">kwards</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">default_zoom</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_staticImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bounds</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a static image to the map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            image_path (str): path to the image file.</span>
+<span class="sd">            bounds (list): bounds of the image in [[south, west], [north, east]] format.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if not os.path.isfile(image_path):</span>
+        <span class="c1">#     raise ValueError(f&quot;Image file &#39;{image_path}&#39; does not exist.&quot;)</span>
+
+        <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">]]</span>
+
+        <span class="n">image_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">ImageOverlay</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">image_path</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">image_layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_video</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bounds</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a video to the map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            video_path (str): path to the video file.</span>
+<span class="sd">            bounds (list): bounds of the video in [[south, west], [north, east]] format.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if not os.path.isfile(video_path):</span>
+        <span class="c1">#     raise ValueError(f&quot;Video file &#39;{video_path}&#39; does not exist.&quot;)</span>
+
+        <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">]]</span>
+
+        <span class="n">video_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">VideoOverlay</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">video_path</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">video_layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_webservice</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lyr_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;WMS Layer&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a web service layer to the map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url (str): URL of the web service.</span>
+<span class="sd">            name (str, optional): Name of the layer. Defaults to &quot;WMS Layer&quot;.</span>
+<span class="sd">            **kwargs: Additional keyword arguments passed to the WMSLayer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">wms_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">WMSLayer</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="n">lyr_name</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="n">transparent</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">wms_layer</span><span class="p">)</span>
 </code></pre></div>
         </details>
 
@@ -1333,8 +1468,130 @@ Defaults to "OpenTopoMap".</p></td>
 
 
 
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_raster" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raster_data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwards</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_raster" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Add raster data to the map using localtileserver.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>raster_data</code></td>
+        <td><code>str</code></td>
+        <td><p>path to the raster file.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raster_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwards</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add raster data to the map using localtileserver.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        raster_data (str): path to the raster file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">localtileserver</span><span class="w"> </span><span class="kn">import</span> <span class="n">TileClient</span><span class="p">,</span> <span class="n">get_leaflet_tile_layer</span>
+
+    <span class="n">tc</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">raster_data</span><span class="p">)</span>
+    <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="o">**</span><span class="n">kwards</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">default_zoom</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_staticImage" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_staticImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_path</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_staticImage" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Add a static image to the map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>image_path</code></td>
+        <td><code>str</code></td>
+        <td><p>path to the image file.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>bounds</code></td>
+        <td><code>list</code></td>
+        <td><p>bounds of the image in [[south, west], [north, east]] format.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_staticImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bounds</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a static image to the map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        image_path (str): path to the image file.</span>
+<span class="sd">        bounds (list): bounds of the image in [[south, west], [north, east]] format.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># if not os.path.isfile(image_path):</span>
+    <span class="c1">#     raise ValueError(f&quot;Image file &#39;{image_path}&#39; does not exist.&quot;)</span>
+
+    <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">]]</span>
+
+    <span class="n">image_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">ImageOverlay</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">image_path</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">image_layer</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h3 id="pypackage_example.pypackage_example.LeafletMap.add_vector" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">add_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Vector Layer&#39;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hover_style</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">add_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Vector Layer&#39;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hover_style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 
 <a href="#pypackage_example.pypackage_example.LeafletMap.add_vector" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -1410,6 +1667,7 @@ Defaults to "OpenTopoMap".</p></td>
     <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">hover_style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds vector data to the map from file path, GeoDataFrame, or GeoJSON-like dict.</span>
 
@@ -1451,12 +1709,144 @@ Defaults to "OpenTopoMap".</p></td>
 
     <span class="c1"># Load GeoJSON</span>
     <span class="n">geo_json</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">GeoJSON</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">geojson_data</span><span class="p">,</span>
-        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-        <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
-        <span class="n">hover_style</span><span class="o">=</span><span class="n">hover_style</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">geojson_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">hover_style</span><span class="o">=</span><span class="n">hover_style</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">geo_json</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_video" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_video</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_path</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_video" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Add a video to the map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>video_path</code></td>
+        <td><code>str</code></td>
+        <td><p>path to the video file.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>bounds</code></td>
+        <td><code>list</code></td>
+        <td><p>bounds of the video in [[south, west], [north, east]] format.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_video</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bounds</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a video to the map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        video_path (str): path to the video file.</span>
+<span class="sd">        bounds (list): bounds of the video in [[south, west], [north, east]] format.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># if not os.path.isfile(video_path):</span>
+    <span class="c1">#     raise ValueError(f&quot;Video file &#39;{video_path}&#39; does not exist.&quot;)</span>
+
+    <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">]]</span>
+
+    <span class="n">video_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">VideoOverlay</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">video_path</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">video_layer</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_webservice" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_webservice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">lyr_name</span><span class="o">=</span><span class="s1">&#39;WMS Layer&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_webservice" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Add a web service layer to the map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>URL of the web service.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the layer. Defaults to "WMS Layer".</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>**kwargs</code></td>
+        <td></td>
+        <td><p>Additional keyword arguments passed to the WMSLayer.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_webservice</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lyr_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;WMS Layer&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a web service layer to the map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): URL of the web service.</span>
+<span class="sd">        name (str, optional): Name of the layer. Defaults to &quot;WMS Layer&quot;.</span>
+<span class="sd">        **kwargs: Additional keyword arguments passed to the WMSLayer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">wms_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">WMSLayer</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="n">lyr_name</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="n">transparent</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">wms_layer</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
