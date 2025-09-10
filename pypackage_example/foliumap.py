@@ -1,3 +1,4 @@
+import os
 import folium
 import folium.plugins
 import geopandas as gpd
@@ -58,9 +59,7 @@ class FoliumMap(folium.Map):
         # Load GeoJSON
         folium.GeoJson(data=geojson_data, name=name).add_to(self)
 
-    def add_split_map(
-        self, left_layer="openstreetmap", right_layer="cartodbpositron", **kwargs
-    ):
+    def add_split_map(self, left="openstreetmap", right="cartodbpositron", **kwargs):
         """
         Add a split map with two layers for comparison.
 
@@ -84,8 +83,18 @@ class FoliumMap(folium.Map):
         #     f'http://mt1.google.com/vt/lyrs={map_type.lower()}&x={{x}}&y={{y}}&z={{z}}'
         # )
 
-        left_layer = folium.TileLayer(left_layer, **kwargs)
-        right_layer = folium.TileLayer(right_layer, **kwargs)
+        from localtileserver import get_folium_tile_layer
+
+        if left.startswith("http") or os.path.exists(left):
+            left_layer = get_folium_tile_layer(left, **kwargs)
+        else:
+            left_layer = folium.TileLayer(left, overlay=True, **kwargs)
+
+        if right.startswith("http") or os.path.exists(right):
+            right_layer = get_folium_tile_layer(right, **kwargs)
+        else:
+            right_layer = folium.TileLayer(right, overlay=True, **kwargs)
+
         sbs = folium.plugins.SideBySideLayers(left_layer, right_layer)
 
         left_layer.add_to(self)
