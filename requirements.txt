@@ -5,3 +5,4 @@ localtileserver
 mapclassify
 matplotlib
 numpy
+setuptools
