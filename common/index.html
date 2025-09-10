@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -657,6 +657,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pypackage_example.common.create_basemap_widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_basemap_widget()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pypackage_example.common.hello_world" class="md-nav__link">
     <span class="md-ellipsis">
       hello_world()
@@ -717,6 +726,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pypackage_example.common.create_basemap_widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_basemap_widget()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pypackage_example.common.hello_world" class="md-nav__link">
     <span class="md-ellipsis">
       hello_world()
@@ -765,6 +783,137 @@
 
 
 
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="pypackage_example.common.create_basemap_widget" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_basemap_widget</span><span class="p">(</span><span class="n">map_instance</span><span class="p">,</span> <span class="n">basemap_options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.common.create_basemap_widget" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Creates a dropdown widget for selecting and switching basemaps on an ipyleaflet map.</p>
+<p>The widget includes a toggle button to show/hide the dropdown, a dropdown menu to select basemaps,
+and a close button to hide the menu. When a new basemap is selected, it calls <code>map_instance.add_basemap2</code>
+with the selected basemap name.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>map_instance</code></td>
+        <td><code>ipyleaflet.Map</code></td>
+        <td><p>The map instance to update when the basemap is changed.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ipywidgets.HBox</code></td>
+      <td><p>A widget containing the toggle button, dropdown, and close button for basemap selection.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/common.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_basemap_widget</span><span class="p">(</span><span class="n">map_instance</span><span class="p">,</span> <span class="n">basemap_options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a dropdown widget for selecting and switching basemaps on an ipyleaflet map.</span>
+
+<span class="sd">    The widget includes a toggle button to show/hide the dropdown, a dropdown menu to select basemaps,</span>
+<span class="sd">    and a close button to hide the menu. When a new basemap is selected, it calls `map_instance.add_basemap2`</span>
+<span class="sd">    with the selected basemap name.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        map_instance (ipyleaflet.Map): The map instance to update when the basemap is changed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ipywidgets.HBox: A widget containing the toggle button, dropdown, and close button for basemap selection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+
+    <span class="k">if</span> <span class="n">basemap_options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">basemap_options</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;OpenStreetMap.Mapnik&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;CartoDB.Positron&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;CartoDB.DarkMatter&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+    <span class="n">toggle</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButton</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">button_style</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># &#39;success&#39;, &#39;info&#39;, &#39;warning&#39;, &#39;danger&#39; or &#39;&#39;</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="s2">&quot;Click to toggle&quot;</span><span class="p">,</span>
+        <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;map&quot;</span><span class="p">,</span>  <span class="c1"># (FontAwesome names without the `fa-` prefix)</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;40px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;40px&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">close_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;times&quot;</span><span class="p">,</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;40px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;40px&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+        <span class="n">options</span><span class="o">=</span><span class="n">basemap_options</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="n">basemap_options</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Basemap:&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">basemap_gui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">toggle</span><span class="p">,</span> <span class="n">dropdown</span><span class="p">,</span> <span class="n">close_button</span><span class="p">])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_toggle_change</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">change</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]:</span>
+            <span class="n">basemap_gui</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">toggle</span><span class="p">,</span> <span class="n">dropdown</span><span class="p">,</span> <span class="n">close_button</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">basemap_gui</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">toggle</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_close_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="c1"># basemap_gui.children = [toggle]</span>
+        <span class="c1"># toggle.value = False</span>
+        <span class="n">basemap_gui</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">toggle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">dropdown</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">close_button</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_dropdown_change</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">change</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]:</span>
+            <span class="n">map_instance</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">map_instance</span><span class="o">.</span><span class="n">layers</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">map_instance</span><span class="o">.</span><span class="n">add_basemap2</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">])</span>
+
+    <span class="n">toggle</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_toggle_change</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+    <span class="n">close_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_close_click</span><span class="p">)</span>
+    <span class="n">dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_dropdown_change</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">basemap_gui</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
 
 
 

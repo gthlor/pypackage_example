@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://gthlor.github.io/pypackage_example/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/changelog/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/common/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/contributing/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/faq/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/installation/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/pypackage_example/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/usage/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/examples/01_folium/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
+    </url>
+    <url>
+         <loc>https://gthlor.github.io/pypackage_example/examples/02_using_widget/</loc>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/examples/intro/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>https://gthlor.github.io/pypackage_example/examples/map/</loc>
-         <lastmod>2025-09-07</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
 </urlset>

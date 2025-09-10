@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -664,6 +664,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap_gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_basemap_gui()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_layer_control" class="md-nav__link">
     <span class="md-ellipsis">
       add_layer_control()
@@ -676,6 +685,15 @@
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_raster" class="md-nav__link">
     <span class="md-ellipsis">
       add_raster()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_split_map" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_split_map()
     </span>
   </a>
   
@@ -712,6 +730,15 @@
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_webservice" class="md-nav__link">
     <span class="md-ellipsis">
       add_webservice()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_widget()
     </span>
   </a>
   
@@ -825,6 +852,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap_gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_basemap_gui()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_layer_control" class="md-nav__link">
     <span class="md-ellipsis">
       add_layer_control()
@@ -837,6 +873,15 @@
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_raster" class="md-nav__link">
     <span class="md-ellipsis">
       add_raster()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_split_map" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_split_map()
     </span>
   </a>
   
@@ -873,6 +918,15 @@
   <a href="#pypackage_example.pypackage_example.LeafletMap.add_webservice" class="md-nav__link">
     <span class="md-ellipsis">
       add_webservice()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypackage_example.pypackage_example.LeafletMap.add_widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_widget()
     </span>
   </a>
   
@@ -1074,6 +1128,9 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
         <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scroll_wheel_zoom</span> <span class="o">=</span> <span class="kc">True</span>
 
+        <span class="n">basemap_widget</span> <span class="o">=</span> <span class="n">create_basemap_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">WidgetControl</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">basemap_widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">))</span>
+
     <span class="k">def</span><span class="w"> </span><span class="nf">add_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a basemap layer from predefined options.</span>
 
@@ -1191,8 +1248,6 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
 <span class="sd">        Args:</span>
 <span class="sd">            raster_data (str): path to the raster file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">localtileserver</span><span class="w"> </span><span class="kn">import</span> <span class="n">TileClient</span><span class="p">,</span> <span class="n">get_leaflet_tile_layer</span>
-
         <span class="n">tc</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">raster_data</span><span class="p">)</span>
         <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="o">**</span><span class="n">kwards</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
@@ -1206,9 +1261,6 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
 <span class="sd">            image_path (str): path to the image file.</span>
 <span class="sd">            bounds (list): bounds of the image in [[south, west], [north, east]] format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># if not os.path.isfile(image_path):</span>
-        <span class="c1">#     raise ValueError(f&quot;Image file &#39;{image_path}&#39; does not exist.&quot;)</span>
-
         <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">]]</span>
 
@@ -1224,9 +1276,6 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
 <span class="sd">            video_path (str): path to the video file.</span>
 <span class="sd">            bounds (list): bounds of the video in [[south, west], [north, east]] format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># if not os.path.isfile(video_path):</span>
-        <span class="c1">#     raise ValueError(f&quot;Video file &#39;{video_path}&#39; does not exist.&quot;)</span>
-
         <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">]]</span>
 
@@ -1249,6 +1298,80 @@ LeafletMap            (<span title="ipyleaflet.leaflet.Map">Map</span>)
             <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="n">lyr_name</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="n">transparent</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">wms_layer</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_split_map</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds split map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            left_layer (str): The left tile layer. Can be a local file path, HTTP URL, or a basemap name. Defaults to &#39;TERRAIN&#39;.</span>
+<span class="sd">            right_layer (str): The right tile layer. Can be a local file path, HTTP URL, or a basemap name. Defaults to &#39;OpenTopoMap&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">zoom</span> <span class="o">=</span> <span class="mi">24</span>
+
+        <span class="k">if</span> <span class="n">right</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+            <span class="n">tc</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+            <span class="n">center</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+            <span class="n">zoom</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">default_zoom</span>
+            <span class="n">right_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span>
+                <span class="n">tc</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">right</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ipyleaflet.basemaps.</span><span class="si">{</span><span class="n">right</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build_url</span><span class="p">()</span>
+            <span class="n">right_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">right</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">left</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">left</span><span class="p">):</span>
+            <span class="n">tc</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+            <span class="n">center</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+            <span class="n">zoom</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">default_zoom</span>
+            <span class="n">left_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span>
+                <span class="n">tc</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">left</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ipyleaflet.basemaps.</span><span class="si">{</span><span class="n">left</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build_url</span><span class="p">()</span>
+            <span class="n">left_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">left</span><span class="p">)</span>
+
+        <span class="n">control</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">SplitMapControl</span><span class="p">(</span>
+            <span class="n">left_layer</span><span class="o">=</span><span class="n">left_layer</span><span class="p">,</span> <span class="n">right_layer</span><span class="o">=</span><span class="n">right_layer</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">zoom</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">zoom</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mi">14</span>
+
+        <span class="k">if</span> <span class="n">center</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a custom widget to the map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            widget (ipywidgets.Widget): The widget to add to the map.</span>
+<span class="sd">            position (str, optional): Position of the widget on the map. Defaults to &quot;topright&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">WidgetControl</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_basemap_gui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a basemap selection GUI to the map.</span>
+
+<span class="sd">        The widget includes a toggle button to show/hide the dropdown, a dropdown menu to select basemaps,</span>
+<span class="sd">        and a close button to hide the menu. When a new basemap is selected, it calls `map_instance.add_basemap2`</span>
+<span class="sd">        with the selected basemap name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            position (str, optional): Position of the widget on the map. Defaults to &quot;topright&quot;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ipywidgets.HBox: A widget containing the toggle button, dropdown, and close button for basemap selection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">basemap_widget</span> <span class="o">=</span> <span class="n">create_basemap_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap_options</span><span class="o">=</span><span class="n">basemap_options</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">WidgetControl</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">basemap_widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">))</span>
 </code></pre></div>
         </details>
 
@@ -1436,6 +1559,82 @@ Defaults to "OpenTopoMap".</p></td>
 
 
 
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_basemap_gui" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_basemap_gui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_basemap_gui" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a basemap selection GUI to the map.</p>
+<p>The widget includes a toggle button to show/hide the dropdown, a dropdown menu to select basemaps,
+and a close button to hide the menu. When a new basemap is selected, it calls <code>map_instance.add_basemap2</code>
+with the selected basemap name.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>position</code></td>
+        <td><code>str</code></td>
+        <td><p>Position of the widget on the map. Defaults to "topright".</p></td>
+        <td><code>&#39;topright&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ipywidgets.HBox</code></td>
+      <td><p>A widget containing the toggle button, dropdown, and close button for basemap selection.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_basemap_gui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a basemap selection GUI to the map.</span>
+
+<span class="sd">    The widget includes a toggle button to show/hide the dropdown, a dropdown menu to select basemaps,</span>
+<span class="sd">    and a close button to hide the menu. When a new basemap is selected, it calls `map_instance.add_basemap2`</span>
+<span class="sd">    with the selected basemap name.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        position (str, optional): Position of the widget on the map. Defaults to &quot;topright&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ipywidgets.HBox: A widget containing the toggle button, dropdown, and close button for basemap selection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">basemap_widget</span> <span class="o">=</span> <span class="n">create_basemap_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap_options</span><span class="o">=</span><span class="n">basemap_options</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">WidgetControl</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">basemap_widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h3 id="pypackage_example.pypackage_example.LeafletMap.add_layer_control" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">add_layer_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
 
@@ -1505,13 +1704,108 @@ Defaults to "OpenTopoMap".</p></td>
 <span class="sd">    Args:</span>
 <span class="sd">        raster_data (str): path to the raster file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">localtileserver</span><span class="w"> </span><span class="kn">import</span> <span class="n">TileClient</span><span class="p">,</span> <span class="n">get_leaflet_tile_layer</span>
-
     <span class="n">tc</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">raster_data</span><span class="p">)</span>
     <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="o">**</span><span class="n">kwards</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">default_zoom</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_split_map" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_split_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">&#39;Esri.WorldImagery&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;OpenTopoMap&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_split_map" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds split map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>left_layer</code></td>
+        <td><code>str</code></td>
+        <td><p>The left tile layer. Can be a local file path, HTTP URL, or a basemap name. Defaults to 'TERRAIN'.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>right_layer</code></td>
+        <td><code>str</code></td>
+        <td><p>The right tile layer. Can be a local file path, HTTP URL, or a basemap name. Defaults to 'OpenTopoMap'.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_split_map</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds split map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        left_layer (str): The left tile layer. Can be a local file path, HTTP URL, or a basemap name. Defaults to &#39;TERRAIN&#39;.</span>
+<span class="sd">        right_layer (str): The right tile layer. Can be a local file path, HTTP URL, or a basemap name. Defaults to &#39;OpenTopoMap&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zoom</span> <span class="o">=</span> <span class="mi">24</span>
+
+    <span class="k">if</span> <span class="n">right</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="n">tc</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+        <span class="n">zoom</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">default_zoom</span>
+        <span class="n">right_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span>
+            <span class="n">tc</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">right</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ipyleaflet.basemaps.</span><span class="si">{</span><span class="n">right</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build_url</span><span class="p">()</span>
+        <span class="n">right_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">right</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">left</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">left</span><span class="p">):</span>
+        <span class="n">tc</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+        <span class="n">zoom</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">default_zoom</span>
+        <span class="n">left_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span>
+            <span class="n">tc</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">left</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ipyleaflet.basemaps.</span><span class="si">{</span><span class="n">left</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build_url</span><span class="p">()</span>
+        <span class="n">left_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">left</span><span class="p">)</span>
+
+    <span class="n">control</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">SplitMapControl</span><span class="p">(</span>
+        <span class="n">left_layer</span><span class="o">=</span><span class="n">left_layer</span><span class="p">,</span> <span class="n">right_layer</span><span class="o">=</span><span class="n">right_layer</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">zoom</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">zoom</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mi">14</span>
+
+    <span class="k">if</span> <span class="n">center</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -1568,9 +1862,6 @@ Defaults to "OpenTopoMap".</p></td>
 <span class="sd">        image_path (str): path to the image file.</span>
 <span class="sd">        bounds (list): bounds of the image in [[south, west], [north, east]] format.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># if not os.path.isfile(image_path):</span>
-    <span class="c1">#     raise ValueError(f&quot;Image file &#39;{image_path}&#39; does not exist.&quot;)</span>
-
     <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">]]</span>
 
@@ -1768,9 +2059,6 @@ Defaults to "OpenTopoMap".</p></td>
 <span class="sd">        video_path (str): path to the video file.</span>
 <span class="sd">        bounds (list): bounds of the video in [[south, west], [north, east]] format.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># if not os.path.isfile(video_path):</span>
-    <span class="c1">#     raise ValueError(f&quot;Video file &#39;{video_path}&#39; does not exist.&quot;)</span>
-
     <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">]]</span>
 
@@ -1847,6 +2135,63 @@ Defaults to "OpenTopoMap".</p></td>
         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="n">lyr_name</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="n">transparent</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">wms_layer</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="pypackage_example.pypackage_example.LeafletMap.add_widget" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span></code>
+
+
+<a href="#pypackage_example.pypackage_example.LeafletMap.add_widget" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a custom widget to the map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>widget</code></td>
+        <td><code>ipywidgets.Widget</code></td>
+        <td><p>The widget to add to the map.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>position</code></td>
+        <td><code>str</code></td>
+        <td><p>Position of the widget on the map. Defaults to "topright".</p></td>
+        <td><code>&#39;topright&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>pypackage_example/pypackage_example.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a custom widget to the map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        widget (ipywidgets.Widget): The widget to add to the map.</span>
+<span class="sd">        position (str, optional): Position of the widget on the map. Defaults to &quot;topright&quot;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">WidgetControl</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">))</span>
 </code></pre></div>
         </details>
     </div>
