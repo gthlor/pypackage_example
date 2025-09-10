@@ -3,7 +3,11 @@
 import os
 import ipyleaflet
 import geopandas as gpd
+
 from typing import Union
+from localtileserver import TileClient, get_leaflet_tile_layer
+from pypackage_example.common import create_basemap_widget
+from ipyleaflet import WidgetControl
 
 
 class LeafletMap(ipyleaflet.Map):
@@ -47,6 +51,9 @@ class LeafletMap(ipyleaflet.Map):
         super().__init__(center=center, zoom=zoom, **kwargs)
         self.layout.height = height
         self.scroll_wheel_zoom = True
+
+        basemap_widget = create_basemap_widget(self)
+        self.add_control(WidgetControl(widget=basemap_widget, position="topright"))
 
     def add_basemap(self, basemap="OpenStreetMap"):
         """Adds a basemap layer from predefined options.
@@ -165,8 +172,6 @@ class LeafletMap(ipyleaflet.Map):
         Args:
             raster_data (str): path to the raster file.
         """
-        from localtileserver import TileClient, get_leaflet_tile_layer
-
         tc = TileClient(raster_data)
         tile_layer = get_leaflet_tile_layer(tc, **kwards)
         self.add(tile_layer)
@@ -180,9 +185,6 @@ class LeafletMap(ipyleaflet.Map):
             image_path (str): path to the image file.
             bounds (list): bounds of the image in [[south, west], [north, east]] format.
         """
-        # if not os.path.isfile(image_path):
-        #     raise ValueError(f"Image file '{image_path}' does not exist.")
-
         if bounds is None:
             bounds = [[-90, -180], [90, 180]]
 
@@ -198,9 +200,6 @@ class LeafletMap(ipyleaflet.Map):
             video_path (str): path to the video file.
             bounds (list): bounds of the video in [[south, west], [north, east]] format.
         """
-        # if not os.path.isfile(video_path):
-        #     raise ValueError(f"Video file '{video_path}' does not exist.")
-
         if bounds is None:
             bounds = [[-90, -180], [90, 180]]
 
@@ -223,3 +222,77 @@ class LeafletMap(ipyleaflet.Map):
             url=url, layers=lyr_name, transparent=transparent, **kwargs
         )
         self.add(wms_layer)
+
+    def add_split_map(
+        self, left: str = "Esri.WorldImagery", right: str = "OpenTopoMap", **kwargs
+    ) -> None:
+        """Adds split map.
+
+        Args:
+            left_layer (str): The left tile layer. Can be a local file path, HTTP URL, or a basemap name. Defaults to 'TERRAIN'.
+            right_layer (str): The right tile layer. Can be a local file path, HTTP URL, or a basemap name. Defaults to 'OpenTopoMap'.
+        """
+        center = None
+        zoom = 24
+
+        if right.startswith("http") or os.path.exists(right):
+            tc = TileClient(right)
+            center = tc.center()
+            zoom = tc.default_zoom
+            right_layer = get_leaflet_tile_layer(
+                tc, name=right, overlay=True, control=True
+            )
+
+        else:
+            url = eval(f"ipyleaflet.basemaps.{right}").build_url()
+            right_layer = ipyleaflet.TileLayer(url=url, name=right)
+
+        if left.startswith("http") or os.path.exists(left):
+            tc = TileClient(left)
+            center = tc.center()
+            zoom = tc.default_zoom
+            left_layer = get_leaflet_tile_layer(
+                tc, name=left, overlay=True, control=True
+            )
+        else:
+            url = eval(f"ipyleaflet.basemaps.{left}").build_url()
+            left_layer = ipyleaflet.TileLayer(url=url, name=left)
+
+        control = ipyleaflet.SplitMapControl(
+            left_layer=left_layer, right_layer=right_layer
+        )
+
+        if zoom:
+            self.zoom = zoom
+        else:
+            self.zoom = 14
+
+        if center:
+            self.center = center
+
+        self.add(control)
+
+    def add_widget(self, widget, position="topright"):
+        """Adds a custom widget to the map.
+
+        Args:
+            widget (ipywidgets.Widget): The widget to add to the map.
+            position (str, optional): Position of the widget on the map. Defaults to "topright".
+        """
+        self.add_control(WidgetControl(widget=widget, position=position))
+
+    def add_basemap_gui(self, basemap_options=None, position="topright"):
+        """Adds a basemap selection GUI to the map.
+
+        The widget includes a toggle button to show/hide the dropdown, a dropdown menu to select basemaps,
+        and a close button to hide the menu. When a new basemap is selected, it calls `map_instance.add_basemap2`
+        with the selected basemap name.
+
+        Args:
+            position (str, optional): Position of the widget on the map. Defaults to "topright".
+
+        Returns:
+            ipywidgets.HBox: A widget containing the toggle button, dropdown, and close button for basemap selection.
+        """
+        basemap_widget = create_basemap_widget(self, basemap_options=basemap_options)
+        self.add_control(WidgetControl(widget=basemap_widget, position=position))
