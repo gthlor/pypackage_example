@@ -2,7 +2,6 @@
 
 """Tests for `pypackage_example` package."""
 
-
 import unittest
 
 from pypackage_example import pypackage_example
